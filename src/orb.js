@@ -42,13 +42,17 @@ function animate() {
     sphere.rotation.y += 0.1
     if (objects.bottom_box.contact(x, y, z)
          || objects.top_box.contact(x, y, z)) { 
-        drop_speed *= -1
+        sphere.bounce()
     }
-    sphere.move_relative(0, drop_speed, 0)
+    sphere.move_relative()
     if (key_status == 'Left') {
         bottom_box.move_relative(-1, 0, 0); 
     } else if (key_status == 'Right') { 
         bottom_box.move_relative(1, 0, 0); 
+    } else if (key_status == 'Up') { 
+        bottom_box.rotate(true); 
+    } else if (key_status == 'Down') { 
+        bottom_box.rotate(false); 
     }
     renderer.render( scene, camera )
 }
@@ -58,6 +62,10 @@ document.addEventListener('keydown', (event) => {
         key_status = 'Left';
     } else if (event.key === 'ArrowRight') {
         key_status = 'Right';
+    } else if (event.key === 'ArrowUp') {
+        key_status = 'Up';
+    } else if (event.key === 'ArrowDown') {
+        key_status = 'Down';
     } else if (event.key === ' ') {
         if (paused) { 
             renderer.setAnimationLoop( animate )

@@ -35,6 +35,16 @@ export class Box extends THREE.Object3D {
         this.position.z += z
     }
 
+    rotate(is_up = true) {
+        if (is_up) {
+            if (this.rotation.z > 0.5) return
+            this.rotation.z += 0.1
+        } else {
+            if (this.rotation.z < -0.5) return
+            this.rotation.z -= 0.1
+        }
+    }
+
 }
 
 export class Sphere extends THREE.Object3D {
@@ -47,14 +57,22 @@ export class Sphere extends THREE.Object3D {
         this.material = material
         this.geometry = geometry
         const item = new THREE.Mesh( geometry, material )
+        this.vector = {x: 0, y: -1, z: 0}
         this.add(item)
     }
 
-    move_relative(x, y, z) {
-        
-        this.position.x += x 
-        this.position.y += y
-        this.position.z += z
+    move_relative() {
+        this.position.x += this.vector.x
+        this.position.y += this.vector.y
+        this.position.z += this.vector.z
+    }
+
+    bounce() {
+        this.vector = {
+            x : this.vector.x,
+            y: this.vector.y * -1,
+            z: this.vector.z 
+        }
     }
 }
 

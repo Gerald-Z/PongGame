@@ -13,8 +13,8 @@ export const CONSTANTS = [
     {
         name: 'bottom_box',
         type: 'box',
-        width: 100,
-        height: 10,
+        width: 50,
+        height: 5,
         depth: 5,
         x: 0,
         y: -40,
