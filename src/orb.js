@@ -33,26 +33,25 @@ CONSTANTS.forEach((item) => {
 
 camera.position.z = CAMERA_POSITION_Z
 const sphere = objects.ball
-const bottom_box = objects.bottom_box
+const player_one = objects.player_one
 let key_status = 'None'
 
 function animate() {
-   // sphere.rotation.x += 0.01
     const {x, y, z} = sphere.position;
     sphere.rotation.y += 0.1
-    if (objects.bottom_box.contact(x, y, z)
-         || objects.top_box.contact(x, y, z)) { 
+    if (objects.player_one.contact(x, y, z)
+         || objects.player_two.contact(x, y, z)) { 
         sphere.bounce()
     }
     sphere.move_relative()
     if (key_status == 'Left') {
-        bottom_box.move_relative(-1, 0, 0); 
+        player_one.move_relative(-1, 0, 0); 
     } else if (key_status == 'Right') { 
-        bottom_box.move_relative(1, 0, 0); 
+        player_one.move_relative(1, 0, 0); 
     } else if (key_status == 'Up') { 
-        bottom_box.rotate(true); 
+        player_one.rotate(true); 
     } else if (key_status == 'Down') { 
-        bottom_box.rotate(false); 
+        player_one.rotate(false);
     }
     renderer.render( scene, camera )
 }
@@ -66,6 +65,20 @@ document.addEventListener('keydown', (event) => {
         key_status = 'Up';
     } else if (event.key === 'ArrowDown') {
         key_status = 'Down';
+    } else if (event.key === 'Escape') {
+            scene.children.forEach((child) => scene.remove(child))
+
+            CONSTANTS.forEach((item) => {
+                const object = 
+                    (item.type === 'box') 
+                    ? new Box(item)
+                    : new Sphere(item)
+            
+                objects[item.name] = object
+                scene.add(object)
+            })
+            renderer.setAnimationLoop( animate )
+
     } else if (event.key === ' ') {
         if (paused) { 
             renderer.setAnimationLoop( animate )

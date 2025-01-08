@@ -38,10 +38,10 @@ export class Box extends THREE.Object3D {
     rotate(is_up = true) {
         if (is_up) {
             if (this.rotation.z > 0.5) return
-            this.rotation.z += 0.1
+            this.rotation.z += 0.05
         } else {
             if (this.rotation.z < -0.5) return
-            this.rotation.z -= 0.1
+            this.rotation.z -= 0.05
         }
     }
 
@@ -57,7 +57,7 @@ export class Sphere extends THREE.Object3D {
         this.material = material
         this.geometry = geometry
         const item = new THREE.Mesh( geometry, material )
-        this.vector = {x: 0, y: -1, z: 0}
+        this.vector = {x: Math.random() * 2 - 1, y: Math.random() * 2 - 1, z: 0}
         this.add(item)
     }
 
