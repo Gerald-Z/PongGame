@@ -57,18 +57,17 @@ top_box.position.y = TOP_BOX_Y
 //scene.add( top_box )
 
 
-const objects = []
+const objects = {}
 
 CONSTANTS.forEach((item) => {
     const object = 
-    (item.type === 'box') 
-    ? new Box(item).create_mesh()
-    : new Sphere(item).create_mesh()
+        (item.type === 'box') 
+        ? new Box(item)
+        : new Sphere(item)
 
-    objects.push(object)
+    objects[item.name] = object
     scene.add(object)
 })
-
 
 
 
@@ -76,9 +75,8 @@ CONSTANTS.forEach((item) => {
 camera.position.z = CAMERA_POSITION_Z
 
 function animate() {
-
    // sphere.rotation.x += 0.01
-   const sphere = objects[0]
+   const sphere = objects.ball
     sphere.rotation.y += 0.1
     if (sphere.position.y < BOX_TOP_Y || sphere.position.y > TOP_BOX_BOTTOM_Y) { 
         drop_speed *= -1
