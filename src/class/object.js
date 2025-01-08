@@ -28,6 +28,13 @@ export class Box extends THREE.Object3D {
             z > this.position.z + box.max.z 
         ) ? false : true
     }
+
+    move_relative(x, y, z) {
+        this.position.x += x 
+        this.position.y += y
+        this.position.z += z
+    }
+
 }
 
 export class Sphere extends THREE.Object3D {
@@ -41,6 +48,13 @@ export class Sphere extends THREE.Object3D {
         this.geometry = geometry
         const item = new THREE.Mesh( geometry, material )
         this.add(item)
+    }
+
+    move_relative(x, y, z) {
+        
+        this.position.x += x 
+        this.position.y += y
+        this.position.z += z
     }
 }
 
