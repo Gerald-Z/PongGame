@@ -6,6 +6,8 @@ const PLAYER_ONE_COLOR = 'green'
 const PLAYER_TWO_COLOR = 'red'
 const PLAYER_RACKET_SIZE = 20
 
+const DEPTH = 20
+
 export const CONSTANTS = [
     {
         name: 'ball',
@@ -23,7 +25,7 @@ export const CONSTANTS = [
         type: 'box',
         width: 1,
         height: PLAYER_RACKET_SIZE,
-        depth: 5,
+        depth: DEPTH,
         x: -50,
         y: 0,
         z: 0,
@@ -34,7 +36,7 @@ export const CONSTANTS = [
         type: 'box',
         width: 1,
         height: PLAYER_RACKET_SIZE,
-        depth: 5,
+        depth: DEPTH,
         x: 50,
         y: 0,
         z: 0,
@@ -45,7 +47,7 @@ export const CONSTANTS = [
         type: 'box',
         width: BORDER_WIDTH,
         height: 90,
-        depth: 5,
+        depth: DEPTH,
         x: -70,
         y: 0,
         z: 0,
@@ -56,7 +58,7 @@ export const CONSTANTS = [
         type: 'box',
         width: BORDER_WIDTH,
         height: 90,
-        depth: 5,
+        depth: DEPTH,
         x: 70,
         y: 0,
         z: 0,
@@ -67,7 +69,7 @@ export const CONSTANTS = [
         type: 'box',
         width: 140,
         height: BORDER_WIDTH,
-        depth: 5,
+        depth: DEPTH,
         x: 0,
         y: -40,
         z: 0,
@@ -78,7 +80,7 @@ export const CONSTANTS = [
         type: 'box',
         width: 140,
         height: BORDER_WIDTH,
-        depth: 5,
+        depth: DEPTH,
         x: 0,
         y: 40,
         z: 0,
