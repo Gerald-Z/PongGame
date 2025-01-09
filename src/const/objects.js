@@ -1,10 +1,10 @@
-const BORDER_COLOR = 'white'
+const BORDER_COLOR = 'gray'
 const BORDER_WIDTH = 10;
 
 const BALL_COLOR = 'white'
 const PLAYER_ONE_COLOR = 'green'
 const PLAYER_TWO_COLOR = 'red'
-
+const PLAYER_RACKET_SIZE = 20
 
 export const CONSTANTS = [
     {
@@ -21,22 +21,22 @@ export const CONSTANTS = [
     {
         name: 'player_one',
         type: 'box',
-        width: 50,
-        height: 2,
+        width: 1,
+        height: PLAYER_RACKET_SIZE,
         depth: 5,
-        x: 0,
-        y: -30,
+        x: -50,
+        y: 0,
         z: 0,
         color: PLAYER_ONE_COLOR
     },
     {
         name: 'player_two',
         type: 'box',
-        width: 100,
-        height: 2,
+        width: 1,
+        height: PLAYER_RACKET_SIZE,
         depth: 5,
-        x: 0,
-        y: 30,
+        x: 50,
+        y: 0,
         z: 0,
         color: PLAYER_TWO_COLOR
     },
@@ -44,7 +44,7 @@ export const CONSTANTS = [
         name: 'left_border',
         type: 'box',
         width: BORDER_WIDTH,
-        height: 100,
+        height: 90,
         depth: 5,
         x: -70,
         y: 0,
@@ -55,7 +55,7 @@ export const CONSTANTS = [
         name: 'right_border',
         type: 'box',
         width: BORDER_WIDTH,
-        height: 100,
+        height: 90,
         depth: 5,
         x: 70,
         y: 0,
